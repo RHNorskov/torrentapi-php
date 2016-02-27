@@ -1,0 +1,26 @@
+{
+    "name": "rhnorskov/torrentapi-php",
+    "description": "Simple PHP wrapper for RARBG's torrentapi.org",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "keywords": [
+        "torrentapi",
+        "rarbg",
+        "php",
+        "api"
+    ],
+    "homepage": "https://github.com/rhnorskov/torrentapi-php",
+    "authors": [
+        {
+            "name": "Rasmus Norskov",
+            "email": "rasmus@rhnorskov.com"
+        }
+    ],
+    "autoload": {
+        "files": ["TorrentAPI.php"]
+    },
+    "minimum-stability": "stable"
+}
