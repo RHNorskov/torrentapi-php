@@ -5,7 +5,7 @@ namespace TorrentAPI;
 class TorrentAPI
 {
     private $appID, $token;
-    private $url = "https://torrentapi.org/pubapi_v2.1.php";
+    private $url = "https://torrentapi.org/pubapi_v2.php";
 
     public function __construct($appID = null)
     {
