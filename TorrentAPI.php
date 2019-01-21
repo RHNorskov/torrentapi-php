@@ -5,9 +5,9 @@ namespace TorrentAPI;
 class TorrentAPI
 {
     private $appID, $token;
-    private $url = "https://torrentapi.org/pubapi_v2.1.php";
+    private $url = "https://torrentapi.org/pubapi_v2.php";
 
-    public function __construct($appID)
+    public function __construct($appID = null)
     {
         $this->appID = $appID;
     }
@@ -16,7 +16,7 @@ class TorrentAPI
     {
         // set token if empty
         if (!isset($this->token)) {
-            $tokenRequest = $this->request(array("get_token" => "get_token","app_id"=>$this->appID));
+            $tokenRequest = $this->request(array("get_token" => "get_token"));
 
             if (isset($tokenRequest) && isset($tokenRequest->token)) {
                 $this->token = $tokenRequest->token;
@@ -37,7 +37,7 @@ class TorrentAPI
         if (isset($request->error)) {
             // if token error get new token
             if (in_array($request->error_code, array(1, 2, 4))) {
-                $this->token = $this->request(array("get_token" => "get_token","app_id"=>$this->appID))->token;
+                $this->token = $this->request(array("get_token" => "get_token"))->token;
 
                 return $this->query($parameters);
             }
@@ -56,14 +56,6 @@ class TorrentAPI
 
     private function request($parameters)
     {
-        $options = array(
-          'http'=>array(
-            'method'=>"GET",
-            'header'=>"User-Agent: " . $this->appID
-          )
-        );
-
-        $context = stream_context_create($options);
-        return json_decode(file_get_contents($this->url . "?" . http_build_query($parameters),false,$context));
+        return json_decode(file_get_contents($this->url . "?" . http_build_query($parameters)));
     }
 }
