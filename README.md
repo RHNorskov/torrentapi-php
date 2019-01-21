@@ -7,7 +7,7 @@ composer require rhnorskov/torrentapi-php
 ```
 
 ## How to use
-Create a new instance of the TorrentAPI and fill in the optional application name. On the new instance run the query function, and pass an array of parameters.
+Create a new instance of the TorrentAPI and fill in the application name. On the new instance run the query function, and pass an array of parameters.
 ```
 $torrentAPI = new TorrentAPI('APPLICATION_NAME");
 
